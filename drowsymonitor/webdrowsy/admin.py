@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Transportation, Coordinate, Message
+
+admin.site.register(Transportation)
+admin.site.register(Coordinate)
+admin.site.register(Message)
