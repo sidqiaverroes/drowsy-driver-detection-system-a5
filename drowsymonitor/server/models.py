@@ -11,4 +11,4 @@ class Vehicle(models.Model):
     plate_licence = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.vehicle_model
