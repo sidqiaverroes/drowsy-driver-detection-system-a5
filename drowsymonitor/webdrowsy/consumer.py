@@ -41,22 +41,22 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
 
         velocity = content["velocity"]
 
-        transportation, created = Transportation.objects.get_or_create(
-            vehicle_id=vehicle_id
-        )
+        # transportation, created = Transportation.objects.get_or_create(
+        #     vehicle_id=vehicle_id
+        # )
 
-        coordinate = Coordinate.objects.create(
-            latitude=content["coordinate"]["latitude"],
-            longitude=content["coordinate"]["longitude"],
-        )
+        # coordinate = Coordinate.objects.create(
+        #     latitude=content["coordinate"]["latitude"],
+        #     longitude=content["coordinate"]["longitude"],
+        # )
 
-        new_message = Message.objects.create(
-            transportation=transportation,
-            driver_state=driver_state,
-            alarm_state=alarm_state,
-            velocity=velocity,
-            coordinate=coordinate,
-        )
+        # new_message = Message.objects.create(
+        #     transportation=transportation,
+        #     driver_state=driver_state,
+        #     alarm_state=alarm_state,
+        #     velocity=velocity,
+        #     coordinate=coordinate,
+        # )
 
         # print(new_message)
         # print("/////////")
@@ -68,15 +68,15 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
             {
                 "type": "chat.message",
                 "new_message": {
-                    "id": new_message.id,
-                    "driver_state": new_message.driver_state,
-                    "alarm_state": new_message.alarm_state,
-                    "velocity": new_message.velocity,
+                    # "id": new_message.id,
+                    "driver_state": driver_state,
+                    "alarm_state": alarm_state,
+                    "velocity": velocity,
                     "coordinate": {
-                        "latitude": new_message.coordinate.latitude,
-                        "longitude": new_message.coordinate.longitude,
+                        "latitude": content["coordinate"]["latitude"],
+                        "longitude": content["coordinate"]["longitude"],
                     },
-                    "timestamp": new_message.timestamp.isoformat(),
+                    # "timestamp": new_message.timestamp.isoformat(),
                 },
             },
         )
