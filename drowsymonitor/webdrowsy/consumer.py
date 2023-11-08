@@ -1,7 +1,9 @@
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import JsonWebsocketConsumer
 from django.contrib.auth import get_user_model
-from .models import Transportation, Message
+from .models import Transportation, Message, Coordinate
+import json
+from decimal import Decimal
 
 User = get_user_model()
 
@@ -9,7 +11,7 @@ User = get_user_model()
 class WebDrowsyConsumer(JsonWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.vehicle_id = None
+        self.vehicle_id = "test"
 
     def connect(self):
         self.accept()
@@ -22,14 +24,30 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
         )
 
     def receive_json(self, content):
+        # print(type(content), content)
+        # print("/////////")
+        # print(type(content["messageData"]), content["messageData"])
+        content = content["messageData"]
         vehicle_id = self.vehicle_id
-        driver_state = content["driver_state"]
-        alarm_state = content["alarm_state"]
+        if content["driver_state"] == "true":
+            driver_state = True
+        elif content["driver_state"] == "false":
+            driver_state = False
+
+        if content["alarm_state"] == "true":
+            alarm_state = True
+        elif content["alarm_state"] == "false":
+            alarm_state = False
+
         velocity = content["velocity"]
-        coordinate = content["coordinate"]
 
         transportation, created = Transportation.objects.get_or_create(
             vehicle_id=vehicle_id
+        )
+
+        coordinate = Coordinate.objects.create(
+            latitude=content["coordinate"]["latitude"],
+            longitude=content["coordinate"]["longitude"],
         )
 
         new_message = Message.objects.create(
@@ -40,6 +58,11 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
             coordinate=coordinate,
         )
 
+        # print(new_message)
+        # print("/////////")
+        # new_message = json.dumps(new_message)
+        # print(new_message)
+
         async_to_sync(self.channel_layer.group_send)(
             self.vehicle_id,
             {
@@ -49,7 +72,10 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
                     "driver_state": new_message.driver_state,
                     "alarm_state": new_message.alarm_state,
                     "velocity": new_message.velocity,
-                    "coordinate": new_message.coordinate,
+                    "coordinate": {
+                        "latitude": new_message.coordinate.latitude,
+                        "longitude": new_message.coordinate.longitude,
+                    },
                     "timestamp": new_message.timestamp.isoformat(),
                 },
             },
@@ -60,6 +86,6 @@ class WebDrowsyConsumer(JsonWebsocketConsumer):
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
-            self.channel_id, self.channel_name
+            self.vehicle_id, self.channel_name
         )
         super().disconnect(close_code)
