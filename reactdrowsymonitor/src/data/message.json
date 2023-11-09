@@ -1,0 +1,43 @@
+{
+    "message": [
+        {
+            "driver_state": "true",
+            "alarm_state": "true",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "driver_state": "false",
+            "alarm_state": "false",
+            "velocity": "70",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "driver_state": "true",
+            "alarm_state": "true",
+            "velocity": "90",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "driver_state": "false",
+            "alarm_state": "false",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            }
+        }
+    ]
+}

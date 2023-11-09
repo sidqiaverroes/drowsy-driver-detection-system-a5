@@ -9,8 +9,8 @@ export default function SearchBar() {
       </div>
       <input
         type="text"
-        className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-300"
-        placeholder="Cari..."
+        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-300"
+        placeholder="Cari Kendaraan..."
       />
     </div>
   );

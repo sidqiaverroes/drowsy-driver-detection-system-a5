@@ -1,0 +1,69 @@
+{
+    "vehicle": [
+        {
+            "vehicle_model": "test123",
+            "driver_name": "test",
+            "plate_licence": "AB123TEST",
+            "driver_state": "true",
+            "alarm_state": "true",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "vehicle_model": "test1234",
+            "driver_name": "test4",
+            "plate_licence": "AB1234TEST",
+            "driver_state": "true",
+            "alarm_state": "true",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "vehicle_model": "test1235",
+            "driver_name": "test5",
+            "plate_licence": "AB1235TEST",
+            "driver_state": "false",
+            "alarm_state": "false",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "vehicle_model": "test123",
+            "driver_name": "test",
+            "plate_licence": "AB123TEST",
+            "driver_state": "false",
+            "alarm_state": "false",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        },
+        {
+            "vehicle_model": "test1234",
+            "driver_name": "test4",
+            "plate_licence": "AB1234TEST",
+            "driver_state": "false",
+            "alarm_state": "false",
+            "velocity": "80",
+            "coordinate": {
+                "latitude": "110",
+                "longitude": "110"
+            },
+            "timestamp": "2023-11-07 10:59:51.880871"
+        }
+    ]
+}
