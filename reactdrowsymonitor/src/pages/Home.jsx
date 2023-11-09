@@ -1,10 +1,10 @@
 import React from "react";
-import InputField from "../components/InputField";
+import MapsInterface from "../components/MapsInterface";
 
 const Home = () => {
   return (
     <>
-      <InputField />
+      <MapsInterface />
     </>
   );
 };
