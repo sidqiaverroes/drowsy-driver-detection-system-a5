@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.55.212.104"]
 
 
 # Application definition
@@ -141,6 +141,7 @@ SPECTACULAR_SETTINGS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://10.55.212.104:5173/",
 ]
 
 CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
