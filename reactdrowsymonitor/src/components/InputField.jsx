@@ -10,7 +10,7 @@ const InputField = () => {
 
   const [messages, setMessages] = useState([]);
 
-  const socketUrl = `ws://192.168.139.205:8000/1`;
+  const socketUrl = `ws://127.0.0.1:8000/1`;
 
   const { sendJsonMessage } = useWebSocket(socketUrl, {
     onOpen: () => {
