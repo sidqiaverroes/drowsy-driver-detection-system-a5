@@ -4,7 +4,6 @@ import CardDriver from "./CardDriver";
 import SearchBar from "./SearchBar";
 
 import { vehicle } from "../data/vehicle.json";
-import CardTest from "./CardTest";
 
 export default function SideBar({ isOpen, toggleSidebar }) {
   //   const [isOpen, setIsOpen] = useState(true);

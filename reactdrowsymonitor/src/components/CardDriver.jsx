@@ -7,16 +7,16 @@ export default function CardDriver({ data }) {
   return (
     <>
       <div
-        className={`flex flex-col w-[300px] h-[300px] ${
+        className={`flex flex-col w-[300px] ${
           ds == "Drowsy" ? "bg-merah" : "bg-hijau"
         } rounded-lg p-4 gap-2`}
       >
         {/* top */}
-        <div className="flex flex-row justify-between items-center">
-          <span className="flex flex-row gap-2 text-xs">
+        <div className="flex flex-row justify-between items-center h-6">
+          <span className="flex flex-row justify-center items-center gap-2 text-xs">
             {as}
             <p
-              className={`flex justify-center items-center rounded-md px-2 ${
+              className={`flex justify-center items-center rounded-md px-2 h-min ${
                 ds == "Drowsy" ? "bg-darkMerah" : "bg-darkHijau"
               }  text-white font-bold`}
             >
@@ -25,6 +25,7 @@ export default function CardDriver({ data }) {
           </span>
           {ds == "Drowsy" && <IoWarning className="text-3xl text-kuning" />}
         </div>
+        {/* end top */}
         {/* bottom */}
         <div className="flex flex-row justify-between items-center">
           <span className="flex flex-col">

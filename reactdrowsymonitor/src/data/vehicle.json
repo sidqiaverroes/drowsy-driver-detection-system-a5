@@ -8,8 +8,8 @@
             "alarm_state": "true",
             "velocity": "80",
             "coordinate": {
-                "latitude": "110",
-                "longitude": "110"
+                "latitude": "-7.7659942",
+                "longitude": "110.3732863"
             },
             "timestamp": "2023-11-07 10:59:51.880871"
         },
@@ -60,8 +60,8 @@
             "alarm_state": "false",
             "velocity": "80",
             "coordinate": {
-                "latitude": "110",
-                "longitude": "110"
+                "latitude": "-7.7659942",
+                "longitude": "110.3732863"
             },
             "timestamp": "2023-11-07 10:59:51.880871"
         }
