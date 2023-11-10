@@ -1,9 +1,9 @@
 {
     "vehicle": [
         {
-            "vehicle_model": "test123",
-            "driver_name": "test",
-            "plate_licence": "AB123TEST",
+            "vehicle_model": "Avanza",
+            "driver_name": "Capstone A5",
+            "plate_licence": "AB 2023 NOV",
             "driver_state": "true",
             "alarm_state": "true",
             "velocity": "80",

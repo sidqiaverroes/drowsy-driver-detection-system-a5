@@ -7,7 +7,7 @@ import { IoWarning } from "react-icons/io5";
 const MapsInterface = () => {
   const vehicleData = vehicle;
   var index = vehicleData.length - 1;
-  const data = vehicleData[0];
+  const data = vehicleData[index];
   console.log(data);
 
   var location = data.coordinate;
@@ -30,18 +30,18 @@ const MapsInterface = () => {
             <Marker position={[location.latitude, location.longitude, 18]}>
               <Popup>
                 <div className="flex flex-col">
-                  <span className="flex flex-row justify-between items-center">
+                  <span className="flex flex-row justify-between items-center h-8 w-40">
                     <p className="font-bold text-lg">{data.driver_name}</p>
                     {ds == "Drowsy" && (
                       <IoWarning className="text-3xl text-kuning" />
                     )}
                   </span>
-                  <span className="flex flex-row justify-between items-center">
+                  <span className="flex flex-row justify-between items-center h-8">
                     <p>{data.vehicle_model}</p>
                     <p>{data.plate_licence}</p>
                   </span>
-                  <span className="flex flex-row justify-between items-center">
-                    <p>Drowsiness:</p>
+                  <span className="flex flex-row justify-between items-center h-8">
+                    <p>Drowsy:</p>
                     <p
                       className={`flex justify-center items-center rounded-md px-2 h-min ${
                         ds == "Drowsy" ? "bg-darkMerah" : "bg-darkHijau"
@@ -51,11 +51,11 @@ const MapsInterface = () => {
                     </p>
                   </span>
 
-                  <span className="flex flex-row justify-between items-center">
+                  <span className="flex flex-row justify-between items-center h-8">
                     <p>Alarm:</p>
                     <p>{as}</p>
                   </span>
-                  <span className="flex flex-row justify-between items-center">
+                  <span className="flex flex-row justify-between items-center h-8">
                     <p>Velocity:</p>
                     <p>{data.velocity}</p>
                   </span>
