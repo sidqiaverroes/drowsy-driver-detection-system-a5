@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Routes,
   RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/Home";
