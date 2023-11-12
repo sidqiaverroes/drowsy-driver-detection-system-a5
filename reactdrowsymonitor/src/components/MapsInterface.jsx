@@ -3,10 +3,24 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
 import { vehicle } from "../data/vehicle.json";
 import { IoWarning } from "react-icons/io5";
+import axios from "axios";
 
 import useWebSocket from "react-use-websocket";
 
 const MapsInterface = () => {
+  const [vehicleData, setVehicleData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/vehicle/");
+    setVehicleData(response.data[0]);
+  };
+
+  useEffect(() => {
+    fetchData(() => {
+      console.log("Data fetched successfully!");
+    });
+  }, []);
+
   const socketUrl = `ws://127.0.0.1:8000/1`;
 
   const [driverState, setDriverState] = useState("");
@@ -57,14 +71,16 @@ const MapsInterface = () => {
               <Popup>
                 <div className="flex flex-col">
                   <span className="flex flex-row justify-between items-center h-8 w-40">
-                    <p className="font-bold text-lg">TEST</p>
+                    <p className="font-bold text-lg">
+                      {vehicleData.driver_name}
+                    </p>
                     {driverState == "true" && (
                       <IoWarning className="text-3xl text-kuning" />
                     )}
                   </span>
                   <span className="flex flex-row justify-between items-center h-8">
-                    <p>test</p>
-                    <p>test123</p>
+                    <p>{vehicleData.vehicle_model}</p>
+                    <p>{vehicleData.plate_licence}</p>
                   </span>
                   <span className="flex flex-row justify-between items-center h-8">
                     <p>Drowsy:</p>

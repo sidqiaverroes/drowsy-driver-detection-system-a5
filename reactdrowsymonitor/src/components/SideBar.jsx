@@ -1,18 +1,27 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import CardDriver from "./CardDriver";
 import SearchBar from "./SearchBar";
 
-import { vehicle } from "../data/vehicle.json";
+// import { vehicle } from "../data/vehicle.json";
 
 export default function SideBar({ isOpen, toggleSidebar }) {
-  //   const [isOpen, setIsOpen] = useState(true);
+  const [vehicleData, setVehicleData] = useState([]);
 
-  //   const toggleSidebar = () => {
-  //     setIsOpen(!isOpen);
-  //   };
+  const fetchData = async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/vehicle/");
+    setVehicleData(response.data);
+    console.log(response.data);
+  };
 
-  const vehicleData = vehicle;
+  useEffect(() => {
+    fetchData(() => {
+      // You can perform additional actions after data is fetched
+      console.log("Data fetched successfully!");
+    });
+  }, []);
+
+  // const vehicleData = vehicle;
   return (
     <>
       <div
