@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
 import { vehicle } from "../data/vehicle.json";
 import { IoWarning } from "react-icons/io5";
 import axios from "axios";
@@ -29,8 +35,7 @@ const MapsInterface = () => {
   const [longitude, setLongitude] = useState("110.3732863");
   const [velocity, setVelocity] = useState("");
   const [timestamp, setTimestamp] = useState("");
-
-  const [lastData, setLastData] = useState([]);
+  const [location, setLocation] = useState([]);
 
   const {} = useWebSocket(socketUrl, {
     onOpen: () => {
@@ -51,9 +56,14 @@ const MapsInterface = () => {
       setVelocity(JSON.stringify(newMessage.velocity));
       setLatitude(JSON.stringify(newMessage.coordinate.latitude));
       setLongitude(JSON.stringify(newMessage.coordinate.longitude));
+      setLocation((prev_loc) => [
+        ...prev_loc,
+        [newMessage.coordinate.latitude, newMessage.coordinate.longitude],
+      ]);
       setTimestamp(newMessage.timestamp);
     },
   });
+
   return (
     <>
       <div className="h-full w-full">
@@ -104,6 +114,7 @@ const MapsInterface = () => {
                 </div>
               </Popup>
             </Marker>
+            <Polyline pathOptions={{ color: "lime" }} positions={location} />
           </MapContainer>
         </div>
       </div>
