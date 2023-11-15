@@ -44,7 +44,7 @@ export default function CardDriver({ data }) {
         {/* top */}
         <div className="flex flex-row justify-between items-center h-6">
           <span className="flex flex-row justify-center items-center gap-2 text-xs">
-            {alarmState}
+            {alarmState == "true" ? "Alarm ON" : "Alarm OFF"}
             <p
               className={`flex justify-center items-center rounded-md px-2 h-min ${
                 driverState == "true" ? "bg-darkMerah" : "bg-darkHijau"
