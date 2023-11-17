@@ -141,10 +141,13 @@ SPECTACULAR_SETTINGS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+<<<<<<< HEAD
     "http://10.55.212.104:5173/",
     "http://10.73.108.102:5173",
     "http://10.72.27.165:5173",
     "http://192.168.43.176:5173",
+=======
+>>>>>>> 5c54f2861377db7b1157002ee77a45ad64838d2d
 ]
 
 CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
