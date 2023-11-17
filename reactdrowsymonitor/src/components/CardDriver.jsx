@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { IoWarning } from "react-icons/io5";
+import { BASE_URL } from "../config";
 import useWebSocket from "react-use-websocket";
 
 export default function CardDriver({ data }) {
-  const socketUrl = `ws://127.0.0.1:8000/${data.id}`;
+  const socketUrl = `ws://${BASE_URL}:8000/${data.id}`;
 
   const [driverState, setDriverState] = useState("");
   const [alarmState, setAlarmState] = useState("");

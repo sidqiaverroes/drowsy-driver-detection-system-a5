@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CardDriver from "./CardDriver";
 import SearchBar from "./SearchBar";
+import { BASE_URL } from "../config";
 
 // import { vehicle } from "../data/vehicle.json";
 
@@ -9,7 +10,7 @@ export default function SideBar({ isOpen, toggleSidebar }) {
   const [vehicleData, setVehicleData] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.get("http://127.0.0.1:8000/api/vehicle/");
+    const response = await axios.get(`http://${BASE_URL}:8000/api/vehicle/`);
     setVehicleData(response.data);
     console.log(response.data);
   };

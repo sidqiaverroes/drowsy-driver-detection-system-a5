@@ -11,13 +11,15 @@ import { vehicle } from "../data/vehicle.json";
 import { IoWarning } from "react-icons/io5";
 import axios from "axios";
 
+import { BASE_URL } from "../config";
+
 import useWebSocket from "react-use-websocket";
 
 const MapsInterface = () => {
   const [vehicleData, setVehicleData] = useState([]);
 
   const fetchData = async () => {
-    const response = await axios.get("http://127.0.0.1:8000/api/vehicle/");
+    const response = await axios.get(`http://${BASE_URL}:8000/api/vehicle/`);
     setVehicleData(response.data[0]);
   };
 
@@ -27,7 +29,7 @@ const MapsInterface = () => {
     });
   }, []);
 
-  const socketUrl = `ws://127.0.0.1:8000/1`;
+  const socketUrl = `ws://${BASE_URL}:8000/1`;
 
   const [driverState, setDriverState] = useState("");
   const [alarmState, setAlarmState] = useState("");
